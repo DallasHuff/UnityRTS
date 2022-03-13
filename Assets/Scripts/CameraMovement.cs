@@ -5,8 +5,8 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
 
-    public int mDelta = 5;
-    public int mSpeed = 15;
+    private int mDelta = 5;
+    private int mSpeed = 25;
     public Camera cam;
 
     // Start is called before the first frame update

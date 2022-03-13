@@ -8,12 +8,18 @@ public class GameRTSController : MonoBehaviour
     public Camera cam;
 
     private List<Unit> selectedUnitList;
+    private Building selectedBuilding;
 
     [SerializeField] private Transform selectionAreaTransform;
 
     public Vector3 worldPos;
     private Vector3 startPos;
     private Vector3 endPos;
+
+    private int unitCounter = 0;
+    private int buildingCounter = 0;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +33,7 @@ public class GameRTSController : MonoBehaviour
     void Update()
     {
         MouseActions();
+        KeyboardActions();
     }
 
     void MouseActions()
@@ -43,7 +50,7 @@ public class GameRTSController : MonoBehaviour
             startPos = cam.ScreenToWorldPoint(Input.mousePosition);
         }
 
-        // Transform selection box
+        // Transform selection box visuals
         if (Input.GetMouseButton(0))
         {
 
@@ -68,6 +75,16 @@ public class GameRTSController : MonoBehaviour
                 unit.SetSelectedVisible(false);
             }
             selectedUnitList.Clear();
+            unitCounter = 0;
+            // Deselect old building
+            if (selectedBuilding != null)
+            {
+                selectedBuilding.SetSelectedVisible(false);
+                selectedBuilding = null;
+            }
+            buildingCounter = 0;
+
+
 
             // Select new units
             Collider2D[] collider2DArray = Physics2D.OverlapAreaAll(startPos, endPos);
@@ -78,12 +95,45 @@ public class GameRTSController : MonoBehaviour
                 {
                     unit.SetSelectedVisible(true);
                     selectedUnitList.Add(unit);
+                    unitCounter++;
                 }
 
-                Debug.Log(selectedUnitList.Count);
             }
+ 
+            // Select new building if there is exactly 1 building and no units selected
+            if (unitCounter == 0)
+            {
+                foreach (Collider2D collider2D in collider2DArray)
+                {
+                    Building building = collider2D.GetComponent<Building>();
+                    if (building != null)
+                    {
+                        selectedBuilding = building;
+                        selectedBuilding.SetSelectedVisible(true);
+                        buildingCounter++;
+                    }
+                }
+                if (buildingCounter > 1)
+                {
+                    selectedBuilding.SetSelectedVisible(false);
+                    selectedBuilding = null;
+                }
+            }   
+
         }
 
 
+    }
+
+    void KeyboardActions()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            selectedBuilding.QAction();
+            foreach (Unit unit in selectedUnitList)
+            {
+                unit.QAction();
+            }
+        }
     }
 }
