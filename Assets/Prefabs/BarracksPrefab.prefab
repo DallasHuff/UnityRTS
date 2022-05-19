@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 5598295566197390842}
   - component: {fileID: 7061460310882709123}
   - component: {fileID: 1501749593052930563}
-  - component: {fileID: 4956512233540158535}
+  - component: {fileID: 183334591301419261}
   m_Layer: 0
-  m_Name: BuildingPrefab
+  m_Name: BarracksPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 154064728619421237}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.688246, y: -0.19850604, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children:
   - {fileID: 8713370135727380981}
   - {fileID: 4582261248654180384}
@@ -133,7 +133,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4, y: 3.5}
   m_EdgeRadius: 0
---- !u!114 &4956512233540158535
+--- !u!114 &183334591301419261
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 154064728619421237}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad9c161c8ce84fa4c96261263810d113, type: 3}
+  m_Script: {fileID: 11500000, guid: 0f3b4b5bd957b734a9c410ae2fc3db08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   location: {fileID: 4177359371549562235}

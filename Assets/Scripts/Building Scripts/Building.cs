@@ -34,8 +34,6 @@ public class Building : MonoBehaviour
 
     public void QAction()
     {
-        Vector3 outputLocation = new Vector3(location.position.x - 1, location.position.y - 2, location.position.z);
-        Debug.Log(outputLocation);
-        Instantiate(qObject, outputLocation, location.rotation);
+        return;
     }
 }

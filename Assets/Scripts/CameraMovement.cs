@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class CameraMovement : MonoBehaviour
 {
 
@@ -25,6 +26,7 @@ public class CameraMovement : MonoBehaviour
 
     private void PanCamera()
     {
+
         // Move Screen Right
         if (Input.mousePosition.x >= Screen.width - mDelta | Input.GetKey(KeyCode.RightArrow))
         {
